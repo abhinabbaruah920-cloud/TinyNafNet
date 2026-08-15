@@ -1,0 +1,12 @@
+numpy
+Pillow
+tqdm
+torch
+torchvision
+onnx
+onnxruntime-gpu
+onnxconverter-common
+scikit-image
+tensorboard
+lpips
+PySide6
