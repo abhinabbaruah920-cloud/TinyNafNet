@@ -52,9 +52,8 @@ desktop.ini
 # ============================================================
 
 # Checkpoints
-weights/*.pt
-weights/*.pth
-weights/*.ckpt
+
+weights/last.pt
 
 # TensorBoard
 logs/
@@ -74,7 +73,6 @@ datasets/
 # Generated results
 # ============================================================
 
-outputs/
 results/
 results_gui/
 
