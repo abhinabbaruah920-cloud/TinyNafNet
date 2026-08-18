@@ -520,7 +520,7 @@ class MainWindow(QMainWindow):
         )
 
         self.output_edit = QLineEdit(
-            "results_gui"
+            "result"
         )
 
         output_button = QPushButton(
