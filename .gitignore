@@ -64,7 +64,8 @@ runs/
 # ============================================================
 
 # Ignore the actual dataset
-datasets/
+datasets/test
+datasets/train
 
 # If you want to keep the directory structure:
 # !datasets/.gitkeep

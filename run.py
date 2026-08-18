@@ -1,4 +1,4 @@
-"""Simple TinyNAFNet GUI with before/after preview."""
+"""TinyNAFNet GUI"""
 
 from __future__ import annotations
 
