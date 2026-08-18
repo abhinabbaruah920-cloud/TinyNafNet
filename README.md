@@ -4,7 +4,7 @@
 
 This repository contains the final TinyNAFNet solution developed for the **AI-Based Restoration of Degraded Semiconductor Images Hackathon**.
 
-The supplied trained checkpoint is already available at https://huggingface.co/Abhinab920/TinyNAfNet :
+The supplied trained checkpoint is already available at https://huggingface.co/Abhinab920/TinyNAfNet/tree/main :
 User is required to keep it in the folder as mentioned below:
 ```text
 weights/best.pt
