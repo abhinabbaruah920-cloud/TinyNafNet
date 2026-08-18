@@ -53,7 +53,6 @@ desktop.ini
 
 # Checkpoints
 
-weights/last.pt
 
 # TensorBoard
 logs/
@@ -62,13 +61,7 @@ runs/
 # ============================================================
 # Datasets
 # ============================================================
-
-# Ignore the actual dataset
-datasets/test
-datasets/train
-
-# If you want to keep the directory structure:
-# !datasets/.gitkeep
+datasets/.gitkeep
 
 # ============================================================
 # Generated results
