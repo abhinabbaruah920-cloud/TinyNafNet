@@ -137,6 +137,14 @@ Python 3.11+
 PyTorch 2.x
 NVIDIA GPU with CUDA support
 ```
+create venv:
+
+```powershell
+python -m venv .venv
+```
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
 
 Install dependencies:
 
