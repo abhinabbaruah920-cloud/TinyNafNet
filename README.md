@@ -11,114 +11,6 @@ weights/best.pt
 ```
 ---
 
-## 1. What the Model Does
-
-The supplied KLA data uses paired grayscale NumPy arrays:
-
-```text
-NoisyLR: 128 × 128
-GT:      256 × 256
-```
-
-The final model performs **2× grayscale super-resolution and restoration**:
-
-```text
-128×128 degraded grayscale image
-              ↓
-        TinyNAFNet
-              ↓
-256×256 restored grayscale image
-```
-
-The degraded images can contain combinations of:
-
-- Speckle noise
-- Gaussian blur
-- Low-resolution degradation
-
-The model is designed to recover the clean high-resolution image while keeping the network small and GPU-efficient.
-
----
-
-## 2. Final Model
-
-```text
-Architecture        TinyNAFNet
-Input channels      1
-Output channels     1
-Scale               2×
-Width               28
-Encoder blocks      [1, 1, 1, 1]
-Middle blocks       2
-Decoder blocks      [1, 1, 1, 1]
-Parameters          4,872,645 (~4.873M)
-```
-
-The network is inspired by NAFNet and uses lightweight restoration blocks with:
-
-- Layer normalization
-- Pointwise convolutions
-- Depthwise convolution
-- SimpleGate-style gating
-- Lightweight channel attention
-- Residual learning
-- PixelShuffle upsampling
-
-Heavy Transformer blocks and multi-head attention are intentionally avoided.
-
----
-
-## 3. Quality Results
-
-Current best checkpoint:
-
-| Metric | Result |
-|---|---:|
-| Parameters | **4.873M** |
-| PSNR | **26.9312 dB** |
-| SSIM | **~0.71–0.73** |
-| LPIPS | **0.3437** |
-
-
----
-
-## 4. Project Structure
-
-```text
-project/
-│
-├── model.py
-├── naf_blocks.py
-├── utils.py
-├── dataset.py
-├── losses.py
-├── metrics.py
-├── trainer.py
-├── train.py
-├── infer.py
-├── evaluate.py
-├── export.py
-├── onnx_infer.py
-├── benchmark.py
-├── run.py
-├── config.py
-├── npy_to_png.py
-├── requirements.txt
-├── README.md
-├── .gitignore
-│
-├── weights/
-│   └── best.pt
-│
-├── outputs/
-│
-└── datasets/
-    └── test/
-        └── NoisyLR/
-            ├── image001.npy
-            ├── image002.npy
-            └── ...
-```
 
 For normal testing, the tester mainly needs:
 
@@ -128,7 +20,7 @@ run.py
 
 ---
 
-## 5. Requirements
+## Requirements
 
 Recommended:
 
@@ -264,7 +156,118 @@ The GUI will:
 
 ---
 
-# 7. GUI Features
+## What the Model Does
+
+The supplied KLA data uses paired grayscale NumPy arrays:
+
+```text
+NoisyLR: 128 × 128
+GT:      256 × 256
+```
+
+The final model performs **2× grayscale super-resolution and restoration**:
+
+```text
+128×128 degraded grayscale image
+              ↓
+        TinyNAFNet
+              ↓
+256×256 restored grayscale image
+```
+
+The degraded images can contain combinations of:
+
+- Speckle noise
+- Gaussian blur
+- Low-resolution degradation
+
+The model is designed to recover the clean high-resolution image while keeping the network small and GPU-efficient.
+
+---
+
+## Final Model
+
+```text
+Architecture        TinyNAFNet
+Input channels      1
+Output channels     1
+Scale               2×
+Width               28
+Encoder blocks      [1, 1, 1, 1]
+Middle blocks       2
+Decoder blocks      [1, 1, 1, 1]
+Parameters          4,872,645 (~4.873M)
+```
+
+The network is inspired by NAFNet and uses lightweight restoration blocks with:
+
+- Layer normalization
+- Pointwise convolutions
+- Depthwise convolution
+- SimpleGate-style gating
+- Lightweight channel attention
+- Residual learning
+- PixelShuffle upsampling
+
+Heavy Transformer blocks and multi-head attention are intentionally avoided.
+
+---
+
+## Quality Results
+
+Current best checkpoint:
+
+| Metric | Result |
+|---|---:|
+| Parameters | **4.873M** |
+| PSNR | **26.9312 dB** |
+| SSIM | **~0.71–0.73** |
+| LPIPS | **0.3437** |
+
+
+---
+
+## Project Structure
+
+```text
+project/
+│
+├── model.py
+├── naf_blocks.py
+├── utils.py
+├── dataset.py
+├── losses.py
+├── metrics.py
+├── trainer.py
+├── train.py
+├── infer.py
+├── evaluate.py
+├── export.py
+├── onnx_infer.py
+├── benchmark.py
+├── run.py
+├── config.py
+├── npy_to_png.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+│
+├── weights/
+│   └── best.pt
+│
+├── outputs/
+│
+└── datasets/
+    └── test/
+        └── NoisyLR/
+            ├── image001.npy
+            ├── image002.npy
+            └── ...
+```
+
+
+
+# GUI Features
 
 The GUI includes:
 
@@ -335,7 +338,7 @@ Opens the folder containing the generated results.
 
 ---
 
-# 8. Output Files
+# Output Files
 
 For an input:
 
@@ -363,7 +366,7 @@ The saved output is clipped to the GT range:
 
 ---
 
-# 9. Viewing `.npy` Files as PNG
+# Viewing `.npy` Files as PNG
 
 NumPy arrays cannot normally be opened by standard image viewers.
 
@@ -389,7 +392,7 @@ python npy_to_png.py --input datasets\test\NoisyLR --output preview_noisy --auto
 
 ---
 
-# 10. Command-Line PyTorch Test
+# Command-Line PyTorch Test
 
 The GUI is recommended, but the same model can be tested from the command line:
 
