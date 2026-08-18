@@ -9,8 +9,6 @@ User is required to keep it in the folder as mentioned below:
 ```text
 weights/best.pt
 ```
-
-
 ---
 
 ## 1. What the Model Does
@@ -222,7 +220,7 @@ datasets\test\NoisyLR
 For example:
 
 ```text
-results_gui
+result
 ```
 
 ### Step 6 — Batch size
@@ -340,7 +338,7 @@ datasets/test/NoisyLR/000001.npy
 the GUI produces:
 
 ```text
-results_gui/000001.npy
+result/000001.npy
 ```
 
 Expected output shape:
@@ -370,7 +368,7 @@ python npy_to_png.py --input datasets\test\NoisyLR --output preview_noisy
 For restored outputs:
 
 ```powershell
-python npy_to_png.py --input results_gui --output preview_restored
+python npy_to_png.py --input results --output preview_restored
 ```
 
 For visualization-only contrast normalization:
